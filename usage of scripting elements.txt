@@ -1,0 +1,22 @@
+index.html <html>
+	<body>
+	<form action="welcome.jsp">
+		<input type="text" name="uname">
+		<input type="submit" value="go">
+	</form>
+	</body>
+</html>
+welcome.jsp <h3>SCRIPTLET TAGS</h3>
+<%
+String name= request.getParameter("uname"); out.print("welcome "+name);
+%>
+<h3>EXPRESSION TAGS</h3>
+<%="Welcome "+request.getParameter("uname") %>
+<h3>DECLARATION TAGS</h3>
+<%!int data=50; %>
+<%="Value of the variable is: "+data %> <BR></BR> <%!
+int cube(int n){
+	return n*n*n;
+}
+%>
+<%="cube of 3 is: "+cube(3) %> 
