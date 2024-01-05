@@ -1,0 +1,53 @@
+<html>
+ <head>
+ <style>
+ body{
+ background-color: #f2f1f2;
+ }
+ header{
+ background-color: #333;
+ padding:2opx;
+ color:#ffff;
+ text-align:center;
+ }
+ ul li{
+ display: inline;
+ margin-right:10px;
+ }
+ ul li a{
+ color:white;
+ text-decoration:none;
+ }
+ div{
+ padding:20px;
+ }
+ </style>
+ </head>
+ <body>
+ <header>
+ <img src="" alt="image not found" width="40" height="40">
+ <h3>
+ timcook
+ </h3>
+ <ul>
+ <li><a href="#about">about</a></li>
+ <li><a href="#education">education</a></li>
+ <li><a href="#about">skills</a></li>
+ <li><a href="#achievements">acheivements</a></li>
+ 
+ </ul>
+ </header>
+ <div id="about">
+ <h1>About</h1>
+ <p></p>
+ </div> 
+ <div id="education">
+ <h1>education</h1>
+ <h5></h5>
+ <ol>
+ <li></li>
+ </ol>
+ 
+ </div> 
+ </body>
+</html>

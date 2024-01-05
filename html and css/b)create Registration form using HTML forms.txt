@@ -1,0 +1,102 @@
+<form action="HELLO.html">
+ Enter your name<input type="text" placeholder="surname" >
+ <input type="text" placeholder="middlename">
+ <input type="text" placeholder="lastname">
+ <br><br>
+ 
+ 
+ Date Of Birth
+ <input type="date"> 
+ 
+ 
+ <br><br>
+ 
+ Enter Email<input type="text" >
+ <br><br>
+ 
+ 
+ 
+ 
+ Gender<input type="radio" name="a">Male
+ <input type="radio" name="a">Female<br>
+ <br>
+ 
+ Enter address<textarea row="50" column="50" area maxlength="20">
+ </textarea>
+ <br><br>
+ Skill Set<input type="checkbox" >C
+ <input type="checkbox" >Java
+ <input type="checkbox" >Python
+ <input type="checkbox" >C++<br>
+ Educational Qualification
+ <table cellspacing="10" cellpadding="10" border="1" >
+ 
+ <tr>
+ 
+ <th>S.No</th>
+ <th>Qualification</th>
+ <th>Passing Year</th>
+ <th>Percentage</th>
+ 
+ </tr>
+ <td>1</td>
+ <td>
+ <select>
+ <option>school</option>
+ <option>intermediate</option>
+ <option>pg</option>
+ 
+ </select>
+ </td>
+ <td>
+ <input type="text" >
+ </td>
+ <td>
+ <input type="text" >
+ </td>
+ <br>
+ <tr>
+ <td>2</td>
+ 
+ <td>
+ <select>
+ <option>school</option>
+ <option>intermediate</option>
+ <option>pg</option>
+ 
+ </select>
+ </td>
+ <td>
+ <input type="text" >
+ </td>
+ <td>
+ <input type="text" >
+ </td>
+ </tr>
+ <tr>
+ <td>3</td>
+ <td>
+ <select>
+ <option>school</option>
+ <option>intermediate</option>
+ <option>pg</option>
+ 
+ </select>
+ </td>
+ <td>
+ <input type="text" >
+ </td>
+ <td>
+ <input type="text" >
+ </td>
+ </tr>
+ </table>
+ languages known :
+ <ol>
+ <li>English</li>
+ <li>Telugu</li>
+ <li>Hindi</li>
+ </ol>
+ <input type="Submit"><br>
+ <input type="Reset">
+ </form>

@@ -1,0 +1,66 @@
+<html>
+<head>
+</head>
+<fieldset>
+<legend>REGISTRATION-FORM:</legend>
+<body>
+<form name="biodataForm" method="post">
+ <label for="name">Name:</label>
+ <input type="text" id="name" name="name" pattern="^[A-Za-z\s]{2,30}$" required title="Enter a valid name (2-30 characters, only letters and spaces)"><br><br>
+ 
+ <label for="email">Email:</label>
+ <input type="email" id="email" name="email" pattern="^[A-Za-z\s]{2,30}$" required title="Enter a valid email address"><br><br>
+ Date:<input type="number" min=1 max=31 required>
+ 	<input type="number" min=1 max=12 required>
+ 		<input type="number" min=1800 max=2040 required><br><br>
+ <label for="phone">Phone Number:</label>
+ <select id="countryCode" name="countryCode" required>
+ <option value="1">+1 (USA)</option>
+ <option value="44">+44 (UK)</option>
+ <option value="44">+91 (India)</option>
+ </select>
+ <input type="tel" id="phone" name="phone" pattern="^[6789]\d{9}$" required title="Enter a valid 10-digit phone number starting with 6, 7, 8, or 9"><br><br>
+ 
+ <label for="phone">Address</label>
+ <textarea id="w3review" name="w3review" rows="4" cols="50"></textarea><br><br>
+ <label for="name">Hobbies:</label><br>
+ reading novels<input type="checkbox">
+ learning languages<input type="checkbox"><br><br>
+ 
+ <label for="name">Gender:</label><br>
+ male<input type="radio">
+ female<input type="radio"><br><br>
+ 
+ <label for="name">Courses applied for:</label><br>
+ inter qualified<input type="checkbox">
+ diploma qualified<input type="checkbox"><br><br>
+ 
+ <label for="name">Qualification:</label><br>
+ <table border=2 cellspacing=10 cellpadding=10>
+ <th>s.no</th>
+ <th>qualification</th>
+ <th>percentage</th>
+ <tr>
+ <td>1</td>
+ <td><select id="countryCode" name="countryCode" required>
+ <option>10th</option>
+ <option>diploma</option>
+ <option>bachelors</option>
+ </select>
+ 	<td>98</td>
+ <tr>
+ 
+ <td>2
+ <td><select id="countryCode" name="countryCode" required>
+ <option>10th</option>
+ <option >diploma</option>
+ <option >bachelors</option>
+ </select>
+ <td>98</td>
+ </table><br>
+ <input type="submit" value="Submit" >
+ <input type="submit" value="Reset">
+ </form>
+ 
+</body>
+</html>
