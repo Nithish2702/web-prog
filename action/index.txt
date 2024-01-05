@@ -1,0 +1,25 @@
+<html>
+
+<head>
+
+<title> The include Action
+
+Examples Hitle>
+
+</head>
+
+<body>
+
+<center>
+
+<h2> The include action
+
+Example</h2>
+
+<jsp:include page=" main.jsp"/>
+
+</center>
+
+</body>
+
+</html>

@@ -1,0 +1,19 @@
+<html>
+
+<head>
+
+<title>The include Action
+
+Example</title>
+
+</head>
+
+<body>
+
+<jsp: forward page=
+
+"Print date.jsp"/>
+
+</body>
+
+</html>

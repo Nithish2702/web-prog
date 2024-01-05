@@ -1,0 +1,9 @@
+<html><body>
+
+<% out.print("Today is "t java. util.calender.getInstance().
+
+getTime());>
+
+</body>
+
+</html>
