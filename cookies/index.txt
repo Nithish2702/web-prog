@@ -1,0 +1,12 @@
+<html>
+<head>
+<title>Cookie example</title>
+<h2 align="center">Cookie</h2>
+</head>
+<body>
+<form method="post" action="serverpage1">
+enter your name:<input type="text" name="name">
+<input type="submit">
+</form>
+</body>
+</html>
