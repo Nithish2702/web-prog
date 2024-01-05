@@ -1,0 +1,26 @@
+import java.io.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+public class Report extends HttpServlet
+{
+ public void doPost(HttpServletRequest req,HttpServletResponse res) throws IOException,ServletException{
+ 
+ res.setContentType("text/html");
+		 PrintWriter out=res.getWriter();
+		 String r1=req.getParameter("name");
+		 String r2=req.getParameter("rno");
+		 int s1=Integer.parseInt(req.getParameter("s1"));
+ int s2=Integer.parseInt(req.getParameter("s2"));
+ int s3=Integer.parseInt(req.getParameter("s3"));
+ int s4=Integer.parseInt(req.getParameter("s4"));
+ int t=s1+s2+s3+s4; 
+ int p=t/4;
+ out.println("<h1>STUDENT REPORT</h1>");
+ out.println("Student Name: "+s1);
+ out.println("Student RollNo.: "+s2);
+ out.println("Total: "+t);
+ out.println("Aggregate: "+p);
+		 out.close();
+ 
+ }
+}
