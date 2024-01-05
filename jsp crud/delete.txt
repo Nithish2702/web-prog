@@ -1,0 +1,6 @@
+
+Student Registration delete form<br><br> 
+<form method=post action=deleterow.jsp>
+    Hall ticket no: <input type=text name=htno><br><br>
+    <input type=submit value=Delete>
+</form>
