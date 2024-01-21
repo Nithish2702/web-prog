@@ -1,0 +1,46 @@
+<h1> Student registration form validation </h1>
+<form>
+First Name:<input type="text" id="fname" pattern="^[A-Za-z]+$" title="name can contain only chars" required>
+<small id="fname-error" style="color:red"></small><br><br>
+Phone Number:<input type="text" id="text" pattern="^[0-9]{10}$" required><br><br>
+Email:<input type="text" id="email" pattern="^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,}$" required><br><br>
+Address:<input type="text" id="address" pattern="[A-Za-z0-9]+$" required><br><br>
+Last Name:<input type="text" id="lname" pattern="^[A-Za-z]+$" title="name can contain only chars" required>
+<small id="lname-error" style="color:red"></small><br><br>
+<input type="submit" value="register" disabled>
+</form>
+<script>
+var fnameinput=document.getElementById("fname");
+var lnameinput=document.getElementById("lname");
+var fnameerror=document.getElementById("fname-error");
+var lnameerror=document.getElementById("lname-error");
+var submitbutton=document.querySelector("input[type='submit']");
+fnameinput.addEventListener("input",function()
+{
+if(fnameinput.validity.patternMissmatch)
+{
+fnameerror.textContent=" name should contain only letters ";
+submitbutton.disabled=true;
+}
+else
+{
+fnameerror.textContent="";
+submitbutton.disabled=false;
+}
+}
+);
+lnameinput.addEventListener("input",function()
+{
+if(lnameinput.validity.patternMissmatch)
+{
+lnameerror.textContent=" name should contain only letters ";
+submitbutton.disabled=true;
+}
+else
+{
+lnameerror.textContent="";
+submitbutton.disabled=false;
+}
+}
+);
+</script>

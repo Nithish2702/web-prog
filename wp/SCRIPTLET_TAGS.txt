@@ -1,0 +1,70 @@
+<html>
+<body>
+<form action="welcome.jsp">
+<input type="text" name="uname">
+<input type="submit" value="go">
+</form>
+</body>
+</html>
+welcome.jsp
+<h3>SCRIPTLET TAGS</h3>
+<%
+String name= request.getParameter("uname");
+out.print("welcome "+name);
+%>
+<h3>EXPRESSION TAGS</h3>
+<%="Welcome "+request.getParameter("uname") %>
+<h3>DECLARATION TAGS</h3>
+<%!int data=50; %>
+<%="Value of the variable is: "+data %>
+<BR></BR>
+<%!
+int cube(int n){
+return n*n*n;
+}
+%>
+<%="cube of 3 is: "+cube(3) %>
+=================================2.EVENT DRIVEN CAL
+<body>
+Enter a:<input type="text" id="t1" required><br><br>
+Enter b:<input type="text" id="t2" required><br><br>
+<input type="button" value="Add" onlick=add()>
+<input type="button" value="Sub" onclick=sub()><br><br>
+<input type="button" value="Mul" onclick=mul()>
+<input type="button" value="Div" onclick=div()><br><br>
+<input type="button" value="Mod" onclick=mod()>
+<br><br>
+Enter b:<input type="text" id="t3" required>
+<script>
+function add(){
+var a=parseInt(document.getElementById("t1").value);
+var b=parseInt(document.getElementById("t2").value);
+var c=a+b;
+document.getElementById("t3").value=c;
+}
+function sub(){
+var a=parseInt(document.getElementById("t1").value);
+var b=parseInt(document.getElementById("t2").value);
+var c=a-b;
+document.getElementById("t3").value=c;
+}
+function mul(){
+var a=parseInt(document.getElementById("t1").value);
+var b=parseInt(document.getElementById("t2").value);
+var c=a*b;
+document.getElementById("t3").value=c;
+}
+function div(){
+var a=parseInt(document.getElementById("t1").value);
+var b=parseInt(document.getElementById("t2").value);
+var c=a/b;
+document.getElementById("t3").value=c;
+}
+function mod(){
+var a=parseInt(document.getElementById("t1").value);
+var b=parseInt(document.getElementById("t2").value);
+var c=a%b;
+document.getElementById("t3").value=c;
+}
+</script>
+</body>

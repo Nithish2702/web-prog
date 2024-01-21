@@ -1,0 +1,24 @@
+<h1>DOM links & anchorr collections </h1>
+<a href="http://example.com">first</a>
+<a href="http://example.com">second</a>
+<a href="http://example.com">third</a>
+<a href="http://example.com">fourth</a>
+<a name="f" href="http://example.com">first</a>
+<a name="s" href="http://example.com">first</a>
+<a name="t" href="http://example.com">first</a>
+<link href="https://google.com"/>
+<area href="https://google.com">
+<script>
+var links=document.links
+document.write("links in the document ");
+for(var i=0;i<links.length;i++)
+{
+document.write("<br>"+links[i].href);
+}
+var anchors=document.anchors;
+document.write("anchors in the document ");
+for(var i=0;i<anchors.length;i++)
+{
+document.write("<br>"+anchors[i].name);
+}
+</script>

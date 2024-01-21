@@ -1,0 +1,58 @@
+index.txt
+<html>
+
+<head>
+
+<title> The include Action
+
+Examples Hitle>
+
+</head>
+
+<body>
+
+<center>
+
+<h2> The include action
+
+Example</h2>
+
+<jsp:include page=" main.jsp"/>
+
+</center>
+
+</body>
+
+</html>
+
+main.txt
+<html>
+
+<head>
+
+<title>The include Action
+
+Example</title>
+
+</head>
+
+<body>
+
+<jsp: forward page=
+
+"Print date.jsp"/>
+
+</body>
+
+</html>
+
+printdate.txt
+<html><body>
+
+<% out.print("Today is "t java. util.calender.getInstance().
+
+getTime());>
+
+</body>
+
+</html>

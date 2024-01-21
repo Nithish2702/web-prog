@@ -1,0 +1,30 @@
+<html>
+<body>
+<h1> java script HTML DOM </h1>
+<p>Add a new html element</p>
+<div id="div1">
+<p id="p1">paragraph</p>
+<p id="p2">another para </p>
+</div>
+<script>
+var para=document.createElement("p");
+var node=document.createTextNode("This is new text from text node");
+para.appendChild(node);
+var el=document.getElementById("div1");
+el.appendChild(para);
+el.style.color="red";
+el.style.fontSize="20px";
+function fun()
+{
+document.body.style.backgroundColor=f.t.value;
+document.body.style.fontSize=f.font.value;
+}
+
+</script>
+<form name="f">
+Enter color name:<input type="text" name="t"><br>
+Enter text size:<input type="text" name="font"><br>
+<input type="submit" value="change" onClick=fun();>
+</form>
+This is body Text.
+</body>

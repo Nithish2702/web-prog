@@ -1,0 +1,243 @@
+index.html
+<h1>Database Operations</h1><br>
+<a href="insert.html">creative rows-insert</a><br><br>
+<a href="GetData">retrieve</a><br><br>
+<a href="update.html">update</a><br><br>
+<a href="delete.html">delete</a><br><br>
+web.xml
+<web-app>
+<servlet>
+<servlet-name>Appform</servlet-name>
+<servlet-class>Appform</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>Appform</servlet-name>
+<url-pattern>/Appform</url-pattern>
+</servlet-mapping>
+<servlet>
+<servlet-name>gd</servlet-name>
+<servlet-class>GetData</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>gd</servlet-name>
+<url-pattern>/GetData</url-pattern>
+</servlet-mapping>
+<servlet>
+<servlet-name>ud</servlet-name>
+<servlet-class>UpdateDataServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>ud</servlet-name>
+<url-pattern>/UpdateDataServlet</url-pattern>
+</servlet-mapping>
+<servlet>
+<servlet-name>del</servlet-name>
+<servlet-class>DeleteRow</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>del</servlet-name>
+<url-pattern>/DeleteRow</url-pattern>
+</servlet-mapping>
+</web-app>
+insert.html
+Student Registration form<br><br>
+<form method=get action=Appform>
+Hall ticketno:<input type=text name=htno><br><br>
+full name:<input type=text name=name><br><br>
+gender:
+<input type=radio value=male name=gender>Male
+<input type=radio value=male name=gender>feMale<br><br>
+branch:
+<select name=branch>
+<option value=cse>CSE</option>
+<option value=civil>CIVIL</option>
+<option value=mech>MECH</option>
+<option value=ece>ECE</option>
+<option value=eee>EEE</option>
+</select><br>
+<input type=submit value=insert>
+</form>
+update.html
+Student Registration form<br><br>
+<form method=post action=UpdateDataServlet>
+Hall ticket no:<input type=text name=htno><br><br>
+full name:<input type=text name=name><br><br>
+gender:
+<input type=radio value=male name=gender>Male
+<input type=radio value=male name=gender>feMale<br><br>
+branch:
+<select name=branch>
+<option value=cse>CSE</option>
+<option value=civil>CIVIL</option>
+<option value=mech>MECH</option>
+<option value=ece>ECE</option>
+<option value=eee>EEE</option>
+</select><br>
+<input type=submit value=Update>
+</form>
+delete.html
+Student Registration form<br><br>
+<form method=post action=DeleteRow>
+Hall ticket no:<input type=text name=htno><br><br>
+<input type=submit value=Delete>
+</form>
+delete.java
+import java.io.*;
+import java.sql.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+public class DeleteRow extends HttpServlet
+{
+public void doPost(HttpServletRequest req, HttpServletResponse res)
+throws IOException, ServletException
+{
+res.setContentType("text/html");
+PrintWriter pw = res.getWriter();
+ String htno = req.getParameter("htno");
+String url = "jdbc:mysql://localhost:3306/test";
+ String username = "root";
+ String password = "";
+Connection con;
+PreparedStatement pst;
+//ResultSet rs;
+try
+{
+Class.forName("com.mysql.jdbc.Driver");
+con = DriverManager.getConnection(url, username, password);
+pst= con.prepareStatement("delete from register where htno=?;");
+pst.setString(1, htno);
+int i = pst.executeUpdate();
+if(i!=0)
+pw.println("Deleting row...");
+else if (i==0)
+{
+pw.println("<br>Row has been deleted successfully.");
+}
+}
+catch(SQLException sx)
+{
+pw.println(sx);
+}
+catch(ClassNotFoundException cx)
+{
+pw.println(cx);
+}
+}
+}
+getdata.java
+import java.io.*;
+import java.sql.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+// Extend HttpServlet class
+public class GetData extends HttpServlet
+{
+public void service(HttpServletRequest request, HttpServletResponse response) throws
+ServletException, IOException
+{
+try
+{
+response.setContentType("text/html");
+PrintWriter out=response.getWriter();
+Class.forName("com.mysql.jdbc.Driver");
+//Open a connection
+Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/test","root","");
+out.println("connection success");
+//build a query
+String sql = "select * from register";
+//create a statemment
+Statement stmt = conn.createStatement();
+//Execute a query
+ResultSet rs=stmt.executeQuery(sql);
+out.println("Query executed...");
+while(rs.next())
+{
+ out.println("ht no="+rs.getString(1)+" name="+rs.getString(2)+" gender="+rs.getString(3)+" branch="+rs.getString(4))}
+}
+catch(Exception e)
+{
+}
+}
+}
+appform.java
+import java.io.*;
+import java.sql.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+// Extend HttpServlet class
+public class Appform extends HttpServlet
+{
+public void doGet(HttpServletRequest request, HttpServletResponse response) throws
+ServletException, IOException
+{
+try
+{
+response.setContentType("text/html");
+PrintWriter out=response.getWriter();
+Class.forName("com.mysql.jdbc.Driver");
+//Open a connection
+Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/test","root","");
+out.println("connection success");
+String htno=request.getParameter("htno");
+String name=request.getParameter("name");
+String gender=request.getParameter("gender");
+String branch=request.getParameter("branch");
+//build a query
+String sql="insert into register values('"+htno+"','"+name+"','"+gender+"','"+branch+"')";
+//create a statment
+Statement stmt=conn.createStatement();
+stmt.executeUpdate(sql);
+out.println("Query executed");
+out.println("<html><h1>Record inserted succesfully</h1></html>"+htno+name);
+}
+catch(Exception e)
+{
+}
+}
+}
+updatedata.java
+import java.io.*;
+import java.sql.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+public class UpdateDataServlet extends HttpServlet {
+ protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOE response.setContentType("text/html");
+ PrintWriter out = response.getWriter();
+ // Database connection details
+ String url = "jdbc:mysql://localhost:3306/test";
+ String username = "root";
+ String password = "";
+ // Get values from the request parameter
+ String htno = request.getParameter("htno");
+ String name = request.getParameter("name");
+ String gender = request.getParameter("gender");
+ String branch = request.getParameter("branch");
+ try {
+ // Establish database connection
+ Class.forName("com.mysql.jdbc.Driver");
+ Connection con = DriverManager.getConnection(url, username, password);
+ // Create an SQL update statement
+ String query = "UPDATE register SET name=?,gender=? ,branch=? WHERE htno=?;";
+ PreparedStatement pst = con.prepareStatement(query);
+ // Set values to the statement
+ pst.setString(1, name);
+ pst.setString(2, gender);
+ pst.setString(3, branch);
+pst.setString(4, htno);
+ // Execute the SQL update statement
+ int rowsUpdated = pst.executeUpdate();
+ if(rowsUpdated > 0) {
+ out.println("<script>alert('Data updated successfully!'); window.location.href='index.html';</script>");
+ } else {
+ out.println("<script>alert('Failed to update data!'); window.location.href='index.html';</script>");
+ }
+ // Close database resources
+ pst.close();
+ con.close();
+ } catch (ClassNotFoundException | SQLException e) {
+ out.println(e.getMessage());
+ } finally {
+ out.close();
+ }
+ }
+}

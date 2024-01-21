@@ -1,0 +1,18 @@
+let mat1 = [ 
+    [1, 1, 1, 1], 
+    [2, 2, 2, 2], 
+    [3, 3, 3, 3], 
+    [4, 4, 4, 4], 
+]; 
+let mat2 = [ 
+    [1, 1, 1, 1], 
+    [2, 2, 2, 2], 
+    [3, 3, 3, 3], 
+    [4, 4, 4, 4], 
+]; 
+let resmat = mat1.map((r, i) => 
+    r.map((v, j) => v + mat2[i][j]) 
+); 
+for (let i = 0; i < resmat.length; i++) { 
+    console.log(resmat[i].join(' ')); 
+}

@@ -1,0 +1,36 @@
+<html>
+
+<body>
+    <script>
+        var originalString = "Hello, World!";
+        document.write("Original String: " + originalString);
+        var uppercaseString = originalString.toUpperCase();
+        document.write("<br>Uppercase: " + uppercaseString);
+
+        var lowercaseString = originalString.toLowerCase();
+        document.write("<br>Lowercase: " + lowercaseString);
+
+        var stringLength = originalString.length;
+        document.write("<br>Length: " + stringLength);
+
+        var substring = originalString.substring(0, 5);
+        document.write("<br>Substring (0 to 5): " + substring);
+
+        var indexOfComma = originalString.indexOf(",");
+        document.write("<br>Index of ',': " + indexOfComma);
+
+        var replacedString = originalString.replace("World", "Universe");
+        document.write("<br>Replaced String: " + replacedString);
+
+        var splitArray = originalString.split(",");
+        document.write("<br>Split Array: " + JSON.stringify(splitArray));
+
+        var stringWithWhitespace = "   Trim me   ";
+        var trimmedString = stringWithWhitespace.trim();
+        document.write("<br>Original String with Whitespace: '" + stringWithWhitespace + "'");
+        document.write("<br>Trimmed String: '" + trimmedString + "'");
+    </script>
+
+</body>
+
+</html>

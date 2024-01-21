@@ -1,0 +1,167 @@
+delete.txt
+Student Registration delete form<br><br> 
+<form method=post action=deleterow.jsp>
+    Hall ticket no: <input type=text name=htno><br><br>
+    <input type=submit value=Delete>
+</form>
+
+deleterow.jsp
+<%@ page import="java.sql.*"%>
+<%
+String htno = request.getParameter("htno");
+String url = "jdbc:mysql://localhost:3306/test";
+String username = "root";
+String password = "";
+Connection con;
+PreparedStatement pst;
+
+try
+{
+Class.forName("com.mysql.jdbc.Driver");
+con = DriverManager.getConnection(url, username, password);
+
+pst= con.prepareStatement("delete from register where htno=?;");
+pst.setString(1, htno);
+
+int i = pst.executeUpdate();
+if(i!=0)
+out.println("Deleting row...");
+else if (i==0)
+{
+out.println("<br>Row has been deleted successfully.");
+}
+}
+catch(SQLException sx)
+{
+out.println(sx);
+}
+catch(ClassNotFoundException cx)
+{
+out.println(cx);
+} 
+%>
+
+getdata.jsp
+<%@ page import="java.sql.*"%>
+<%
+try
+{
+Class.forName("com.mysql.jdbc.Driver");
+
+Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/test","root","");
+out.println("connection success");
+
+String sql = "select * from register";
+
+Statement stmt = conn.createStatement();
+
+ResultSet rs=stmt.executeQuery(sql);
+out.println("Query executed...");
+while(rs.next())
+{
+  out.println("ht no="+rs.getString(1)+" name="+rs.getString(2)+" gender="+rs.getString(3)+" branch="+rs.getString(4));
+}
+}
+catch(Exception e)
+{
+}
+%>
+
+index.txt
+<h1>Database Operations</h1> <br>
+ <a href="insert.html">Create Rows-Insert</a><br><br>
+<a href="getdata.jsp">Retrieve</a><br><br>
+<a href="update.html">Update</a><br><br>
+<a href="delete.html">Delete</a><br><br>
+
+insert.jsp
+<%@ page import="java.sql.*"%>
+<%
+try
+{
+Class.forName("com.mysql.jdbc.Driver");
+Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/test","root","");
+out.println("Connection success");
+String htno=request.getParameter("htno");
+String name=request.getParameter("name");
+String gender=request.getParameter("gender");
+String branch=request.getParameter("branch");
+
+String sql="insert into register values('"+htno+"','"+name+"','"+gender+"','"+branch+"')";
+
+Statement stmt=conn.createStatement();
+
+stmt.executeUpdate(sql);
+out.println("Query executed....");
+out.println("<html><h1>Record inserted sussessfuly</h1></html>"+htno+name);
+}
+catch(Exception e)
+{
+}
+%>
+
+insert.txt
+
+
+
+
+
+update.jsp
+<%@ page import="java.sql.*"%>
+<%
+try {
+	String url = "jdbc:mysql://localhost:3306/test";
+        String username = "root";
+        String password = "";
+            
+        Class.forName("com.mysql.jdbc.Driver");
+        Connection con = DriverManager.getConnection(url, username, password);
+        
+        String htno=request.getParameter("htno");
+        String name=request.getParameter("name");
+        String gender=request.getParameter("gender");
+        String branch=request.getParameter("branch");
+        
+        String query = "UPDATE register SET name=?,gender=? ,branch=? WHERE htno=?;";
+        PreparedStatement pst = con.prepareStatement(query);
+            
+        pst.setString(1, name);
+        pst.setString(2, gender);
+        pst.setString(3, branch);
+	pst.setString(4, htno);
+            
+        int rowsUpdated = pst.executeUpdate();
+
+        if(rowsUpdated > 0) {
+              out.println("<script>alert('Data updated successfully!'); window.location.href='index.html';</script>");
+        }
+        else {
+             out.println("<script>alert('Failed to update data!'); window.location.href='index.html';</script>");
+        }
+            
+        pst.close();
+        con.close();
+}
+catch(Exception e)
+{
+}
+%>
+
+update.txt
+Student Registration Update form<br><br> 
+<form method=post action=update.jsp>
+    Hall ticket no: <input type=text name=htno><br><br>
+    Full name : <input type=text name=name><br><br>
+    Gender:     
+    <input type=radio value=male name=gender> Male 
+    <input type=radio value=female name=gender> Female <br><br>
+    Branch :
+    <select name=branch>
+    <option value=cse>CSE</option> 
+    <option value=civil>CIVIL</option> 
+    <option value=mech>MECH</option>
+    <option value=ece>ECE</option> 
+    <option value=eee>EEE</option>
+    </select></br>
+    <input type=submit value=Update>
+</form>
